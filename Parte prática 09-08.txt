@@ -1,0 +1,127 @@
+/* Criando Tabela EM SQL Server */
+
+CREATE TABLE FUNCIONARIOS 
+(
+IdFuncionario Integer,
+Nome Varchar (100),
+Sexo varchar (15),
+
+email Varchar (100),
+
+Departamento Varchar (100),
+
+Salario integer,
+
+Cargo Varchar (100),
+Estado Varchar (20)
+);
+
+
+/* Inserindo Valores na tabela */
+
+INSERT INTO FUNCIONARIOS VALUES (1,'Francisco','Masculino','Francisco@gmail.com','Esportes',2500,'Supervisor','São Paulo');
+
+INSERT INTO FUNCIONARIOS VALUES (2,'Andressa','Feminino','Andressa@gmail.com','Sapatos',2000,'Vendedora','Rio de Janeiro');
+
+INSERT INTO FUNCIONARIOS VALUES (3,'Fabricio','Masculino','Fabricio@hotmail.com','Eletrônicos',2300,'Vendedor','Mato Grosso');
+
+INSERT INTO FUNCIONARIOS VALUES (4,'Alexandre','Masculino','Alexandre@outlook.com','Cozinha',2300,'Marketing','Minas gerais');
+
+INSERT INTO FUNCIONARIOS VALUES (5,'Adriano','Masculino','Adriano@hotmail.com','Eletrônicos',2300,'Vendedor','Mato Grosso');
+
+INSERT INTO FUNCIONARIOS VALUES (6,'Mauricio','Masculino','Mauricio@icloud.com','Eletrônicos',3500,'Gerente de Vendas','São Paulo');
+
+INSERT INTO FUNCIONARIOS VALUES (7,'Marcela','Feminino','Marcela@gmail.com','Cosméticos',3000,'Supervisora','Santa Catarina');
+
+INSERT INTO FUNCIONARIOS VALUES (8,'Cristina','Feminino','cristina@hotmail.com','Recursos Humanos',5000,'Analista de Recursos Humanos','São Paulo');
+
+INSERT INTO FUNCIONARIOS VALUES (9,'Sarah','Feminino','Sarah@uol.com','Eletrônicos',3500,'Promotor de Vendas','Mato Grosso');
+
+INSERT INTO FUNCIONARIOS VALUES (10,'Humberto','Masculino','Humberto@hotmail.com','Gestão',7200,'CEO','Rio de Janeiro');
+
+INSERT INTO FUNCIONARIOS VALUES (11,'Fernanda','Feminino','Fernanda@hotmail.com','Gestão',20000,'Fundadora','Bahia');
+
+INSERT INTO FUNCIONARIOS VALUES (12,'Emanuel','Masculino','Emanuel@uol.com.com ','Gestão',20000,'Cofundador','Bahia');
+
+INSERT INTO FUNCIONARIOS VALUES (13,'Jeferson','Masculino','jeferson@gmail.com','Vendas',3000,'Coordenador de Vendas','Santa Catarina');
+
+INSERT INTO FUNCIONARIOS VALUES (14,'José','Masculino','jose@hotmail.com','Esportes',3500,'Gerente','Amapá');
+
+INSERT INTO FUNCIONARIOS VALUES (15,'Fabiana','Feminino','fabiana@uol.com','Vendas',5000,'Gerente de Vendas','Rio de Janeiro');
+
+INSERT INTO FUNCIONARIOS VALUES (16,'Jenifer','Feminino','jenifer@gmail.com','Recursos Humanos',1850,'Auxiliar de RH','Amazonas');
+
+INSERT INTO FUNCIONARIOS VALUES (17,'Roberta','Feminino','roberta@hotmail.com','Sapatos',5500,'Gerente Administrativa','Ceará');
+
+INSERT INTO FUNCIONARIOS VALUES (18,'Anderson','Masculino','anderson@icloud.com','Cosméticos',2300,'Gerente','Amapá');
+
+
+/* Consultas com filtros diversos */
+
+SELECT * FROM FUNCIONARIOS WHERE departamento='Gestão' OR estado='Bahia';
+
+SELECT NOME, CARGO, SALARIO FROM FUNCIONARIOS WHERE SALARIO=>=5000;
+
+SELECT * FROM FUNCIONARIOS WHERE departamento='Gestão' AND estado='Bahia'OR DEPARTAMENTO='Esportes';
+
+SELECT idfuncionario AS 'Registro', nome AS ' Funcionario', estado AS 'Localidade', email AS 'Contato' FROM FUNCIONARIOS
+
+
+/* operadores de comparação */
+
+= - igual
+<= - menor igual
+>= - maior igual
+<> - diferente
+
+
+/* contar números de funcionários */
+
+SELECT COUNT(*) FROM FUNCIONARIOS;
+
+
+/* Contando e agrupando no SQL */
+
+SELECT Sexo, COUNT(*) AS'Numero de Funcionarios por Sexo' FROM FUNCIONARIOS GROUP BY SEXO;
+
+SELECT estado, COUNT(*) AS'Numero de Funcionarios por Estado' FROM FUNCIONARIOS GROUP BY Estado;
+
+SELECT * FROM FUNCIONARIOS ORDER BY salario DESC;
+
+SELECT * FROM FUNCIONARIOS ORDER BY salario DESC;
+
+SELECT * FROM FUNCIONARIOS WHERE salario>=5000 ORDER BY salario DESC;
+
+
+/* Atualizando dados na tabela SQL */ /*Nunca utilizar UPDATE sem WHERE */
+
+UPDATE FUNCIONARIOS SET cargo='Gerente Geral', salario=4500 WHERE idfuncionario=6;
+
+
+/* Deletando dados na tabela SQL */ /*Nunca utilizar UPDATE sem WHERE */
+
+DELETE FROM FUNCIONARIOS WHERE idfuncionario=18;
+
+
+
+/* Consultar valores nulos e/ou vazio */
+
+SELECT nome, email, FROM Funcionario WHERE email IN NULL;
+
+
+/* Consultando valores com números limitados de resultador */
+
+SELECT * FROM FUNCIONARIOS LIMIT 10;
+
+/* 
+1 - CREATE TABLE NOME-DA-TABELA
+2 - INSERT INTO NOME DA TABELA VALUES(...)
+3 - A VÍRGULA É DELIMITAR EM QUAL COLUNA SERÁ INSERIDO OS DADOS
+4 - finalizar um comando
+5 - SELECT nome, cargo, departamento, estado FROM Funcionarios;
+6 - no AND todas as condições tem que ser verdadeiras, enuanto o OR apenas uma delas precisa ser
+7 - WHERE - REALIZAR FILTRAGENS
+8 - UPDATE FUNCIONARIOS SET cargo='SUPERVISOR', salario=3800 WHERE idfuncionario=5;
+
+
+
